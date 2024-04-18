@@ -20,16 +20,18 @@ def main():
         print("0) Quitter\n")
         choice = input("Votre choix ?\n")
 
+        product = None
+
         if choice == "0":
             client_is_online = False
         elif choice == "1":
-            try:
-                client.buy_product(product1)
-            except NotEnoughMoney:
-                print("Pas assez d'argent")
+            product = product1
         elif choice == "2":
+            product = product2
+
+        if product is not None:
             try:
-                client.buy_product(product2)
+                client.buy_product(product)
             except NotEnoughMoney:
                 print("Pas assez d'argent")
 

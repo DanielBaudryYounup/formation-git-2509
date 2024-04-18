@@ -38,3 +38,15 @@ def test_buy_product_should_raise_exception_when_not_enough_money():
 
     # then
     assert client.wallet == 100
+
+
+def test_buy_product_should_decrease_wallet_for_each_quantity():
+    # given
+    client = Client("Bob", 200)
+    product = Product("Product 1", 100)
+
+    # when
+    client.buy_product(product, 2)
+
+    # then
+    assert client.wallet == 0

@@ -17,4 +17,4 @@ class Client:
         if self.wallet < product.price:
             raise NotEnoughMoney("Solde insuffisant !")
         print("Produit acheté !")
-        self.wallet = self.wallet - product.price
+        self.wallet = self.wallet - product.price * quantity

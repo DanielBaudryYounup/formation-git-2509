@@ -34,6 +34,8 @@ def main():
                 client.buy_product(product)
             except NotEnoughMoney:
                 print("Pas assez d'argent")
+            except Exception:
+                print("Un problème est survenu")
 
     print("A bientôt !")
 

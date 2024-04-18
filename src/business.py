@@ -4,6 +4,10 @@ class Product:
         self.price = price
 
 
+class NotEnoughMoney(Exception):
+    pass
+
+
 class Client:
     def __init__(self, name: str, wallet: int):
         self.name = name
@@ -14,4 +18,4 @@ class Client:
             print("Produit acheté !")
             self.wallet = self.wallet - product.price
         else:
-            print("Solde insuffisant !")
+            raise NotEnoughMoney("Solde insuffisant !")

@@ -7,7 +7,7 @@ def main():
     available_products = [product1, product2]
 
     firstname = input("Quel est votre prénom ?")
-    client = Client(firstname, 200)
+    client = Client(firstname, 300)
     print(f"Bonjour {firstname}, votre solde est de : {client.wallet}\n")
 
     client_is_online = True

@@ -1,4 +1,5 @@
 from business import Client, Product
+from src.business import NotEnoughMoney
 
 
 def main():
@@ -22,9 +23,17 @@ def main():
         if choice == "0":
             client_is_online = False
         elif choice == "1":
-            client.buy_product(product1)
+            try:
+                client.buy_product(product1)
+            except NotEnoughMoney:
+                print("Pas assez d'argent")
         elif choice == "2":
-            client.buy_product(product2)
+            try:
+                client.buy_product(product2)
+            except NotEnoughMoney:
+                print("Pas assez d'argent")
+
+    print("A bientôt !")
 
 
 if __name__ == '__main__':

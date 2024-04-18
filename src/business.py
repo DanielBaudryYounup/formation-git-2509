@@ -14,8 +14,7 @@ class Client:
         self.wallet = wallet
 
     def buy_product(self, product: Product):
-        if self.wallet >= product.price:
-            print("Produit acheté !")
-            self.wallet = self.wallet - product.price
-        else:
+        if self.wallet < product.price:
             raise NotEnoughMoney("Solde insuffisant !")
+        print("Produit acheté !")
+        self.wallet = self.wallet - product.price

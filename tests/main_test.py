@@ -1,12 +1,12 @@
 import pytest
 
-from src.business import Client, Product, NotEnoughMoney
+from src.business import Client, Product, NotEnoughMoney, ProductType
 
 
 def test_buy_product_decrease_wallet_with_product_price():
     # given
     client = Client("Bob", 200)
-    product = Product("Product 1", 50)
+    product = Product("Product 1", ProductType.TYPE_A, 50)
 
     # when
     client.buy_product(product)
@@ -18,7 +18,7 @@ def test_buy_product_decrease_wallet_with_product_price():
 def test_buy_product_decrease_wallet_until_empty():
     # given
     client = Client("Bob", 100)
-    product = Product("Product 1", 100)
+    product = Product("Product 1", ProductType.TYPE_A, 100)
 
     # when
     client.buy_product(product)
@@ -30,7 +30,7 @@ def test_buy_product_decrease_wallet_until_empty():
 def test_buy_product_should_raise_exception_when_not_enough_money():
     # given
     client = Client("Bob", 100)
-    product = Product("Product 1", 200)
+    product = Product("Product 1", ProductType.TYPE_A, 200)
 
     # when
     with pytest.raises(NotEnoughMoney):
@@ -43,7 +43,7 @@ def test_buy_product_should_raise_exception_when_not_enough_money():
 def test_buy_product_should_decrease_wallet_for_each_quantity():
     # given
     client = Client("Bob", 200)
-    product = Product("Product 1", 100)
+    product = Product("Product 1", ProductType.TYPE_A, 100)
 
     # when
     client.buy_product(product, 2)
@@ -55,7 +55,7 @@ def test_buy_product_should_decrease_wallet_for_each_quantity():
 def test_buy_product_should_not_set_negative_wallet_value():
     # given
     client = Client("Bob", 200)
-    product = Product("Product 1", 100)
+    product = Product("Product 1", ProductType.TYPE_A, 100)
 
     # when
     client.buy_product(product, 4)

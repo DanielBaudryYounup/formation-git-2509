@@ -1,11 +1,13 @@
-from business import Client, Product
-from src.business import NotEnoughMoney
+from business import Client, Product, NotEnoughMoney, ProductType
 
 
 def main():
-    product1 = Product("Produit 1", 60)
-    product2 = Product("Produit 2", 100)
-    available_products = [product1, product2]
+    product1 = Product("Produit 1", ProductType.TYPE_A, 60)
+    product2 = Product("Produit 2", ProductType.TYPE_B, 100)
+    available_products = {
+        "1": product1,
+        "2": product2
+    }
 
     firstname = input("Quel est votre prénom ?")
     client = Client(firstname, 300)
@@ -15,23 +17,23 @@ def main():
 
     while client_is_online:
         print("Que voulez-vous acheter ?\n")
-        for product in available_products:
-            print(f"1) {product.name} - {product.product_type} ({product.price}€)\n")
+        for key, product in available_products.items():
+            print(f"{key}) {product.name} - {product.product_type} ({product.price}€)\n")
         print("0) Quitter\n")
         choice = input("Votre choix ?\n")
 
-        product = None
+        chosen_product = None
 
         if choice == "0":
             client_is_online = False
-        elif choice == "1":
-            product = product1
-        elif choice == "2":
-            product = product2
+        else:
+            for key, product in available_products.items():
+                if choice == key:
+                    chosen_product = product
 
-        if product is not None:
+        if chosen_product is not None:
             try:
-                client.buy_product(product)
+                client.buy_product(chosen_product)
             except NotEnoughMoney:
                 print("Pas assez d'argent")
             except Exception:

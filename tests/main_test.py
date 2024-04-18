@@ -38,4 +38,3 @@ def test_buy_product_should_raise_exception_when_not_enough_money():
 
     # then
     assert client.wallet == 100
-

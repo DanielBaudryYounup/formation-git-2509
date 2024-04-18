@@ -15,7 +15,7 @@ def main():
     while client_is_online:
         print("Que voulez-vous acheter ?\n")
         for product in available_products:
-            print(f"1) {product.name} ({product.price}€)\n")
+            print(f"1) {product.name} - {product.product_type} ({product.price}€)\n")
         print("0) Quitter\n")
         choice = input("Votre choix ?\n")
 

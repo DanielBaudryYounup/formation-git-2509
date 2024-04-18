@@ -13,3 +13,5 @@ class Client:
         if self.wallet >= product.price:
             print("Produit acheté !")
             self.wallet = self.wallet - product.price
+        else:
+            print("Solde insuffisant !")

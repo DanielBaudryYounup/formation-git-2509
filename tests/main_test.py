@@ -23,3 +23,4 @@ def test_buy_product_decrease_wallet_until_empty():
 
     # then
     assert client.wallet == 0
+

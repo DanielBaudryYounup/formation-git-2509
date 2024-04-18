@@ -11,3 +11,15 @@ def test_buy_product_decrease_wallet_with_product_price():
 
     # then
     assert client.wallet == 150
+
+
+def test_buy_product_decrease_wallet_until_empty():
+    # given
+    client = Client("Bob", 100)
+    product = Product("Product 1", 100)
+
+    # when
+    client.buy_product(product)
+
+    # then
+    assert client.wallet == 0

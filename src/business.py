@@ -10,6 +10,6 @@ class Client:
         self.wallet = wallet
 
     def buy_product(self, product: Product):
-        if self.wallet > product.price:
+        if self.wallet >= product.price:
             print("Produit acheté !")
             self.wallet = self.wallet - product.price

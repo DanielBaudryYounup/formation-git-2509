@@ -50,3 +50,15 @@ def test_buy_product_should_decrease_wallet_for_each_quantity():
 
     # then
     assert client.wallet == 0
+
+
+def test_buy_product_should_not_set_negative_wallet_value():
+    # given
+    client = Client("Bob", 200)
+    product = Product("Product 1", 100)
+
+    # when
+    client.buy_product(product, 4)
+
+    # then
+    assert client.wallet == 0

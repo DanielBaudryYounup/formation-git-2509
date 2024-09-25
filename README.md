@@ -1,2 +1,2 @@
 # formation-git
-Repo pour la formation Git
+Repo pour la formation Gitdsss
